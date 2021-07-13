@@ -1,3 +1,14 @@
+import Board from '../../components/Board';
+import Write from '../../components/Write';
+import Detail from '../../components/Detail';
+import { Route, useHistory, useLocation } from 'react-router';
+
+import './style.scss';
+
+import { useState } from 'react';
+import useApiCall from '../../hooks/useApiCall';
+
+
 function Main () {
     const history = useHistory();
     const location = useLocation();
@@ -29,9 +40,9 @@ function Main () {
             price={boardData.price}
             user={boardDate.user}
             imageLink = {boardData.imageLink}
-            setBoardData={( => {
+            setBoardData={() => {
                 history.push(`/board/${boardData._id}`);
-            })}
+            }}
             />
         );
     });
