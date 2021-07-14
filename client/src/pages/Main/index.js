@@ -38,7 +38,7 @@ function Main () {
             category={boardData.category}
             time={boardData.time}
             price={boardData.price}
-            user={boardDate.user}
+            user={boardData.user}
             imageLink = {boardData.imageLink}
             setBoardData={() => {
                 history.push(`/board/${boardData._id}`);
