@@ -57,8 +57,27 @@ function CategoryInput({
         );
     }
 
-
-
-
-
+    return (
+        <div className = 'category-input'>
+            <input
+                type = 'text'
+                value = {inputValue}
+                onChange = {(e) => {
+                    setInputValue(e.target.value);
+                }}
+            />
+            <div className = 'button-wrapper'>
+                <button onClick = {updateCategory} className = 'green'>
+                    수정하기
+                </button>
+                <button onClick = {updateCategory} className = 'red'>
+                    삭제하기
+                </button>
+                <button onClick = {cancelCategory}>취소하기</button>
+            </div>
+        </div>
+    );
 }
+
+
+export default CategoryInput;

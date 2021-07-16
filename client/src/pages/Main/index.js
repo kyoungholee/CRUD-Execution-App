@@ -3,8 +3,6 @@ import Write from '../../components/Write';
 import Detail from '../../components/Detail';
 import { Route, useHistory, useLocation } from 'react-router';
 
-import './style.scss';
-
 import { useState } from 'react';
 import useApiCall from '../../hooks/useApiCall';
 
@@ -12,13 +10,13 @@ import useApiCall from '../../hooks/useApiCall';
 function Main () {
     const history = useHistory();
     const location = useLocation();
-    const [loading, testDate , error, fetchDate] = useApiCall(
+    const [loading, testData , error, fetchDate] = useApiCall(
         `${process.env.REACT_APP_API_SERVER}/api/board`
     );
 
     const [visible, setVisible] = useState(false);
 
-    if (!testDate) { 
+    if (!testData) { 
         return<></>;
     }
 
@@ -30,7 +28,7 @@ function Main () {
         return <> 엘 : {error}</>;
     }
 
-    const BoardComponents = testDate.map((boardData) => {
+    const BoardComponents = testData.map((boardData) => {
         return ( 
             <Board 
             key={boardData._id}
