@@ -5,7 +5,7 @@
 // 이 userID를 가지고 누가 접속했는지 서버가 알 수 있다.
 
 
-const User = require("../../models/user");
+const User = require("../../../models/user");
 const validUser = async (req, res, next) => {
 
 
