@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {useEffect , useState} from 'react';
-
+//   함수값을 받을때, 변경할떄 
 
 
 function CategoryInput({
@@ -10,11 +10,12 @@ function CategoryInput({
 }) {
     const [inputValue, setInputValue] = useState(selectedCategory?.title ?? '');
 
-    useEffect(() => {
+    useEffect(() => { //명령형  어떤 effect를 발생하는 함수를 인자로 받는다. 
+                //즉 값을 받는 형태이다. 
         setInputValue(selectedCategory?.title ?? '');
     }, [selectedCategory]);
 
-    
+      //axios의params값을 저장 한다 
     const addCategory = async () => {
         await axios.post(`${process.env.REACT_APP_API_SERVER}/api/category`, {
             title : inputValue,
@@ -22,7 +23,7 @@ function CategoryInput({
         categoryFetch();
     };
 
-    const updateCategory = async () => {
+    const updateCategory = async () => { // 서버에 있는 api/category 를 말한다. 
         await axios.put(`${process.env.REACT_APP_API_SERVER}/api/category`, {
             _id : selectedCategory._id,
             title : inputValue,
@@ -32,7 +33,7 @@ function CategoryInput({
 
     const deleteCategory = async () => {
         await axios.delete(
-            `${process.env.REACT_APP_API_SERVER}/api/category/${selectedCategory._id}`
+            `${process.env.REACT_APP_API_SERVER}/api/category/${selectedCategory._id}, ${inputValue}`
         );
         setSelectedCategory(null);
         categoryFetch();

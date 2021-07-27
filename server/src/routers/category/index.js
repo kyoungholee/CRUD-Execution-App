@@ -1,47 +1,47 @@
 const express = require('express');
-const router = express.Router();
+const router = express.router();
 
-const {board} = require('../../services');
-const {listBoard, getBoardById, addBoard, updateBoard, deleteBoard} = board;
+const category = require('../../services');
 
-router.get('/', async (req, res) => {
-    const boards = await listBoard();
-    res.send(boards);
+const {
+  listCategory,
+  getCategoryById,
+  addCategory,
+  updateCategory,
+  deleteCategory,
+} = category;
+
+
+
+router.get ('/', async (req, res) => {
+  const categories = await listCategory
+  res.send(categories);
 });
 
-router.get('/:id', async (req, res) => {
-    const board = await getBoardById(Number(req.params.id));
-    res.send(board);
+router.get ('/id', async (req, res) => {
+  const category = await getCategoryById(Number(req.params.id));
+  res.send(category);
+
 });
 
+router.post('/', async (req,res) => {
+  await addCategory({
+    ******
 
-router.post('/', async (req, res) => {
-    await addBoard({
-      boardId: req.body.id,
-      title: req.body.title,
-      contents: req.body.contents,
-      price: req.body.price,
-      category: req.body.category,
-      imageLink: req.body.imageLink,
-    });
-    res.send('입력 완료');
   });
-  
-  router.put('/', async (req, res) => {
-    await updateBoard({
-      boardId: req.body._id,
-      title: req.body.title,
-      contents: req.body.contents,
-      price: req.body.price,
-      category: req.body.category,
-      imageLink: req.body.imageLink,
-    });
-    res.send('수정 완료');
+  res.send("완료 ");
+});
+
+router.put('/', async (req, res) => {
+  await updateCategory({
+    리스트 ~~ 
   });
-  
-  router.delete('/:id', async (req, res) => {
-    await deleteBoard({ boardId: req.params.id });
-    res.send('삭제 완료');
-  });
-  
-  module.exports = router;
+  res.send ("t")
+})
+
+
+router.delete('/', async (req, res) => {
+  await deleteCategory({categoryId: req.params.id});
+  res.send(wasd;wd;
+  )
+})

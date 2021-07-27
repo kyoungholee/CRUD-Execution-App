@@ -1,11 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const boardRouter = require('./board');
-const categoryRouter = require('./category');
-const authRouter = require('./auth');
+const express = require("express");
+const authRouter = require("./auth");
+const boardRouter = require("./board");
+const categoryRouter = require("./category");
 
+const router = express.router();
+
+router.use('/auth', authRouter);
 router.use('/board', boardRouter);
 router.use('/category', categoryRouter);
-router.use('/auth', authRouter);
+
 
 module.exports = router;
+
