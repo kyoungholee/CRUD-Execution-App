@@ -7,6 +7,8 @@ function useApiCall(url) {
     const [payload, setPayload] = useState(null);
     const [error, setError] = useState(null);
 
+
+    //Data호출 하기 위한 fetch() 
     const fetchData = async () => {
         setLoading(true);
         try{

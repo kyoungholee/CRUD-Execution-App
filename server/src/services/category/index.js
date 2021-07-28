@@ -70,8 +70,7 @@ const deleteCategory = async ({ categoryId }) => {
 };
 
 module.exports = {
-  listCategory,
-  const listCategory = 
+  listCategory, 
   getCategoryById,
   addCategory,
   updateCategory,
