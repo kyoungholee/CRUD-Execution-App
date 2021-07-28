@@ -1,56 +1,50 @@
-// crud를 이해하기 위한 server부분의 기능 및 
-// app에 필요한 nodejs 연결과 데이터베이스 연결에 관한 걸 작성하고 
-//어떻게 사용하고 무슨 경로로 app이 돌아가는지를 전반적이 설명하는 곳이다. 
-
 const express = require('express');
 const cors = require('cors');
 const router = require('./routers');
 const app = express();
 const port = 4000;
 
-const {connect : dbConnect} = require('./models');
+const { connect: dbConnect } = require('./models');
 
 dbConnect();
 
-app.set('views engine', 'ejs');
 app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
-
 app.use(express.json());
-app.use(express.urlencoded({
-    extended : true,
-})
-  );
-app.use(cors);
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(cors());
+
+// cookie에 전달되어 오는 정보를 req.session을 통해 사용할 수 있도록 파싱해줌
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-
-const cookieSession = require('cookie-session')
-
-
+// front에는 user 정보를 cookie에 담고
+// back에는 user 정보를 session에 담아 쓰기 위한 설정
+const cookieSession = require('cookie-session');
 app.use(
   cookieSession({
-    name : 'session',
-    keys : ['secretValue'],
-    maxAge : 24 * 60 * 60 * 1000, 
-  },
-})
+    name: 'session',
+    keys: ['secretValue'],
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
+  })
 );
 
 app.use(express.static('public'));
 
 app.use('/api', router);
+
 app.get('/', (req, res) => {
   res.render('index.html');
 });
 
 app.listen(port, () => {
-
-})
-
-
-
-
-
+  console.log(`Example app listening at http://localhost:${port}`);
+});

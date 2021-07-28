@@ -13,16 +13,15 @@ import dotenv from 'dotenv';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 dotenv.config();
 
-  //useState에 대한 대체 함수로 사용 //초기상태 ,행동 
 const userReducer = (state, action) => {
   switch (action.type) {
-    case 'signin' : 
-    return {
-      username : action.payload.username,
-      location : action.payload.location,
-    };
-    case 'signout' : 
-    return {username : '', location : ''};
+    case 'signin':
+      return {
+        username: action.payload.username,
+        location: action.payload.location,
+      };
+    case 'signout':
+      return { username: '', location: '' };
     default:
       throw new Error();
   }
@@ -30,22 +29,15 @@ const userReducer = (state, action) => {
 
 export const UserContext = createContext(null);
 
+function App() {
+  const [user, dispatch] = useReducer(userReducer, {
+    username: '',
+    location: '',
+  });
 
-// initialState를 사용해도 된다. 
-//초기 useReducer에 대한 방법으로 
-// const [state, dispatch] = useReducer(reducer, initialstate)
-
-
-function App() {                       //사용자 함수에 대한 공간여부 
-
-    const [user, dispatch] = useReducer(userReducer, {
-        username: '',
-        location: '',
-    });
-
-    return ( 
-        <UserContext.Provider value={{ user, dispatch}} >
-              <Router>
+  return (
+    <UserContext.Provider value={{ user, dispatch }}>
+      <Router>
         <Header />
         <Switch>
           <Route path='/category'>
@@ -60,10 +52,8 @@ function App() {                       //사용자 함수에 대한 공간여부
         </Switch>
         <Footer />
       </Router>
-        </UserContext.Provider>
-    );
+    </UserContext.Provider>
+  );
 }
 
-export default App; 
-
-
+export default App;
