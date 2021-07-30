@@ -3,6 +3,7 @@ import CategoryInput from '../../components/CategoryInput';
 import useApiCall from '../../hooks/useApiCall';
 import { useState } from 'react';
 
+
 function CategoryPage() {
   const [loading, categoryData, error, fetchData] = useApiCall(
     `${process.env.REACT_APP_API_SERVER}/api/category`
