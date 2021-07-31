@@ -60,8 +60,8 @@ return (
     <div className='category-input'>
     <input
       type = 'text'
-      value = {inputValue}
-      onChange = {(e) => {
+      value={inputValue}
+      onChange={(e) => {
         setInputValue(e.target.value);
       }} // e 에 input 입력 이벤트에 대한 정보가 있음.
     />
