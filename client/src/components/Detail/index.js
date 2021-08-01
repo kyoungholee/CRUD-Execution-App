@@ -1,5 +1,5 @@
 import Board from '../Board';
-import Content from '../Content';
+import Content from './Content';
 
 
 function Detail ({boardData, setVisible}) {

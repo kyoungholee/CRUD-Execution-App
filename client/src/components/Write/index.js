@@ -1,7 +1,7 @@
     //작성하기 부분이다 ..
     import axios from 'react';
     import React, {useState} from 'react';
-    import {useHistory} from 'react-router-dom;'
+    import {useHistory} from 'react-router-dom';
     import Input from './Input';
 
     function Write({boardData, setVisible, fetchData,}) {
