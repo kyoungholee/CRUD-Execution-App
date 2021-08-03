@@ -6,19 +6,13 @@ const listCategory = async () => {
   try {
     const categories = await CategoryModel.find({}).exec();
     return categories;
-  } catch (err) {
+  } catch (err) { 
     console.error(err);
     return [];
   }
 };
 
-try {
-  const categories = await CategoryModel.find({}).exec();
-  return categories;
 
-} catch() {
-
-}
 const getCategoryById = async (categoryId) => {
   try {
     const category = await CategoryModel.findOne({ id: categoryId }).exec();
@@ -29,15 +23,6 @@ const getCategoryById = async (categoryId) => {
   }
 };
 
-const addCategory = async ({***}) => {
- try {
-   await CategoryModel.create({
-
-   })
- } catch() {
-
- }
-}
 
 const addCategory = async ({ title }) => {
   try {
@@ -54,8 +39,9 @@ const updateCategory = async ({ categoryId, title }) => {
   try {
     const query  = {_id : categoryId};
     await CategoryModel.updateOne(query).exec();
-  } catch() {
-
+  } catch(err) {
+    console.error(err);
+    return{};
   }
 };
 

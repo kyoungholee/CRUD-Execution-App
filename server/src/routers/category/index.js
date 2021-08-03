@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.router();
 
+
 const category = require('../../services');
 
 const {
@@ -26,22 +27,26 @@ router.get ('/id', async (req, res) => {
 
 router.post('/', async (req,res) => {
   await addCategory({
-    ******
-
+    categoryId : req.body.id,
+    title : req.body.title,
   });
   res.send("완료 ");
 });
 
 router.put('/', async (req, res) => {
   await updateCategory({
-    리스트 ~~ 
+    categoryId : req.body._id,
+    title : req.body.title,
+
   });
-  res.send ("t")
-})
+  res.send ("수정 ")
+});
 
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   await deleteCategory({categoryId: req.params.id});
-  res.send(wasd;wd;
-  )
-})
+  res.send(" 삭제 ")
+
+});
+
+module.exports = router;

@@ -42,7 +42,8 @@ router.post('/', async(req, res) => {
     return res.send({
       user : user,
     });
-  } catch() {
+  } catch(err) {
+    console.error(err)
     return res.sendStatus(500);
 
   }
@@ -59,20 +60,22 @@ router.post('/login', async (req, res) => {
       username : req.body.username,
     });
     if (!user) {
-      retrun res.status(403).send{(
+      return res.status(403).send({
         message : 'username or password is wrong',
       });
       req.session.userID = user._id;
-      return res.send{(
+      return res.send({
         user : user,
-      )};
+      });
     }
-  } catch() {
-
+  } catch(err) {
+    console.error(err)
+  
   }
+  return {};
 })
 
-router.get('/' validUser, async (req, res) => {
+router.get('/', validUser, async (req, res) => {
   try { 
     res.send({
       user: req.user,
@@ -89,7 +92,8 @@ router.delete('/', validUser, async(req, res) => {
   try {
     req.session = null;
     req.sendStatus(200);
-  } catch () {
+  } catch (error) {
+    console.error(err)
     return res.sendStatus(500);
   }
 })

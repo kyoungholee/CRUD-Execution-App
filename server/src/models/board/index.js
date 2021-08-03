@@ -21,4 +21,4 @@ const BoardSchema = new Schema({
 
 })
 
-module.exports = model{'board', BoardSchema};
+module.exports = model('board' , BoardSchema);

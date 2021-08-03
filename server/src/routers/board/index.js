@@ -3,7 +3,7 @@ const router =  express.Router();
 
 const {board} = require('../../services');
 
-const { listBoard, addBoard, getBoard, updateBoard, deleteBoard }
+const { listBoard, addBoard, getBoardById, updateBoard, deleteBoard } = board;
 
 router.get('/', async (req, res) => {
   const boards = await listBoard();
@@ -45,9 +45,8 @@ router.delete('/id', async (req, res) => {
 })
 
 
-
-get //조회 하기 때문에 함수가 필요하다
-
+ //조회 하기 때문에 함수가 필요하다
+/**
 1.const board = await.listBorad
 res.send('board');
  2. id를저장 
@@ -63,7 +62,4 @@ post
     리스트들을 추가하면된다. 
   })
 })
-
-put
-
-delete
+ */
