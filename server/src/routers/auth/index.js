@@ -98,6 +98,7 @@ router.delete('/', validUser, async(req, res) => {
   }
 })
 
+module.exports = router;
 
 //post 등록 및 전송 
 //get 조회 

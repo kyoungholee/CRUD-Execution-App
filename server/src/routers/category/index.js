@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.router();
+const express = require("express");
+const router = express.Router();
 
 
 const category = require('../../services');
+
 
 const {
   listCategory,
@@ -18,6 +19,7 @@ router.get ('/', async (req, res) => {
   const categories = await listCategory
   res.send(categories);
 });
+
 
 router.get ('/id', async (req, res) => {
   const category = await getCategoryById(Number(req.params.id));

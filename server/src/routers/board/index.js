@@ -1,15 +1,17 @@
 const express = require('express');
 const router =  express.Router();
 
-const {board} = require('../../services');
+const { board } = require('../../services');
 
 const { listBoard, addBoard, getBoardById, updateBoard, deleteBoard } = board;
 
+
+
 router.get('/', async (req, res) => {
   const boards = await listBoard();
-  res.send('boards');
-
+  res.send(boards);
 });
+
 
 router.get('/id', async (req, res) => {
   const board = await getBoardById(Number(req.params.id));
@@ -44,6 +46,7 @@ router.delete('/id', async (req, res) => {
   await deleteBoard({boardId : board.params.id})
 })
 
+module.exports = router;
 
  //조회 하기 때문에 함수가 필요하다
 /**
