@@ -4,6 +4,7 @@ const User = require('../../models/user');
 
 const { validUser } = require('../../middleware/user');
 
+
 // 새 사용자를 만드는 로직(회원가입)
 router.post('/', async (req, res) => {
   // 입력된 정보가 다 안들어왔으면 에러를 보내준다.
@@ -32,6 +33,7 @@ router.post('/', async (req, res) => {
 
     // 회원가입하고 바로 로그인이 되도록 해주기 위해
     //  session에 userID를 싣어준다. (세션에 userID 싣는다 === 로그인)
+
     req.session.userID = user._id;
 
     // 생성된 user정보를 보낸다 (password는 userSchema 생성 때 작성한 toJSON가 실행되면서 사라져서 username과 location만 전달된다.)
