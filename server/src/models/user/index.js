@@ -33,7 +33,6 @@ userSchema.methods.comparePassword = async (passowrd) => {
      }
          catch(err) {
              return false; 
-             consol.log("asasd");
          }
      };
 

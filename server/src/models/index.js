@@ -16,6 +16,7 @@ const connect = async () => {
 
     
     db = mongoose.connection;
+};
 
     const disconnect  = () => {
         if(!db) {
@@ -24,4 +25,4 @@ const connect = async () => {
         mongoose.disconnect();
 };
 
-module.exports = (connect, disconnect);
+module.exports = {disconnect, connect};
