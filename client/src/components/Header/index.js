@@ -19,6 +19,16 @@ function Header() {
     }
 };
 
+  //로그인 이후 Mypage 로직 부분 
+  const mypageClickHandler = async() => {
+    try {
+      await axios.post(`${process.env.REACT_APP_API_SERVER}/api/auth/mypage`);
+      dispatch ({ type : 'mypage'});
+    } catch(e) {
+      console.error(e);
+    }
+  };
+
 const username = user?.username !== '' ? user.username : '';
 
 
@@ -49,6 +59,21 @@ return (
               </button>
             </li>
           )}
+
+           {username === '' && (
+            <li>
+              <button
+                className='dropdown-item'
+                type='button'
+                onClick={() => {
+                  history.push('/auth/signup');
+                }}
+              >
+                회원가입
+              </button>
+            </li>
+          )}
+          
           {username !== '' && (
             <li>
               <button
@@ -60,17 +85,16 @@ return (
               </button>
             </li>
           )}
-          <li>
-            <button
-              className='dropdown-item'
-              type='button'
-              onClick={() => {
-                history.push('/auth/signup');
-              }}
-            >
-              회원가입
-            </button>
-          </li>
+          {username !== '' && (
+            <li>
+              <button
+              className = 'my-best-page'
+              type = 'button'
+              onClick = {mypageClickHandler}>
+                내정보
+              </button>
+            </li>
+          )} 
         </ul>
       </div>
     </div>
