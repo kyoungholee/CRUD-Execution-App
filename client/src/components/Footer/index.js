@@ -18,9 +18,9 @@ function Footer() {
           onClick: () => history.push('/category'),
         },
         {
-          title: '내글',
+          title: '내글쓰기',
           color: 'green',
-          onClick: () => {},
+          onClick: () => history.push('/writer'),
         },
     ];
 
