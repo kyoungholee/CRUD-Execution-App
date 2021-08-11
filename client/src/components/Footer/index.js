@@ -10,8 +10,8 @@ import { useHistory } from 'react-router-dom';
 function Footer() {
     const history = useHistory();
     const buttonList = [
-        { title: '홈', color: 'red', onClick: () => history.push('/') },
-        { title: '검색', color: 'blue', onClick: () => {} },
+        { title: '홈',  onClick: () => history.push('/') },
+        { title: '검색', onClick: () => history.push('/search')},
         {
           title: '카테고리',
           color: 'yellow',
@@ -20,7 +20,7 @@ function Footer() {
         {
           title: '내글쓰기',
           color: 'green',
-          onClick: () => history.push('/writer'),
+          onClick: () => history.push('/Writer'),
         },
     ];
 

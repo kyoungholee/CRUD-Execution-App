@@ -15,6 +15,7 @@
 
         const createBoardData = async() => {
             await axios.post (`${process.env.REACT_APP_API_SERVER}/api/board` , {
+
                 title,
                 category,
                 price,
@@ -22,10 +23,11 @@
             });
             setVisible(false);
             fetchData();
+            history.push('/');
         };
 
         const updateBoardData = async() => {
-            await axios.put (`${process.env.REACT_APP_API_SERVER}/api/board` , {
+            await axios.get (`${process.env.REACT_APP_API_SERVER}/api/board` , {
                 //수정해야할 _id 목록을 알려준다. 
                 _id : boardData._id,
                 title,
@@ -48,6 +50,8 @@
             history.push('/');
         };
 
+
+
         if (boardData === null) {
             return (
                 <div 
@@ -55,7 +59,6 @@
                 onClick = {() => {
                     setVisible(false);
                 }}>
-
 
     <div className='inputs-wrapper'>
             <Input title={'글 제목'} value={title} setValue={setTitle} />
@@ -79,9 +82,9 @@
                 >
                 취소하기
                 </button>
-            </div>
-            </div>
-        </div>
+            </div> 
+         </div>
+    </div>
         );
     } else {
         // 여기는 수정하기
@@ -103,8 +106,8 @@
             />
             <Input title={'글 내용'} value={contents} setValue={setContents} />
             <div className='button-wrapper'>
-                <button className='green' onClick={updateBoardData}>
-                수정하기
+                <button className='green' onClick={createBoardData}>
+                작성하기
                 </button>
                 <button className='red' onClick={deleteBoardData}>
                 삭제하기

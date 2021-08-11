@@ -3,7 +3,7 @@
 function Board({
     title,
     category,
-    time,
+    time, 
     price,
     user,
     setBoardData,
