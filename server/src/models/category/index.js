@@ -4,6 +4,7 @@ const CategorySchema = new Schema({
     title : {
         type : String,
     },
+    
 });
 
 module.exports = model('category', CategorySchema);

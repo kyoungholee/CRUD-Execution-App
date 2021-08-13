@@ -60,6 +60,8 @@
                     setVisible(false);
                 }}>
 
+
+
     <div className='inputs-wrapper'>
             <Input title={'글 제목'} value={title} setValue={setTitle} />
             <Input title={'카테고리'} value={category} setValue={setCategory} />
@@ -71,7 +73,7 @@
             />
             <Input title={'글 내용'} value={contents} setValue={setContents} />
             <div className='button-wrapper'>
-                <button className='green' onClick={createBoardData}>
+                <button onClick={createBoardData}>
                 작성하기
                 </button>
                 <button
@@ -106,7 +108,7 @@
             />
             <Input title={'글 내용'} value={contents} setValue={setContents} />
             <div className='button-wrapper'>
-                <button className='green' onClick={createBoardData}>
+                <button className='green' onClick={updateBoardData}>
                 작성하기
                 </button>
                 <button className='red' onClick={deleteBoardData}>
