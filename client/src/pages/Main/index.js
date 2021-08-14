@@ -9,8 +9,8 @@ import useApiCall from '../../hooks/useApiCall';
 function Main() {
   const history = useHistory();
   const location = useLocation(); // 현재 url에서 id값을 얻기 위해
+ 
 
-  
   const [loading, testData, error, fetchData] = useApiCall(
     `${process.env.REACT_APP_API_SERVER}/api/board`
   );
@@ -70,6 +70,7 @@ function Main() {
         className='open-button'
         onClick={() => setVisible((state) => !state)}
       >
+
         카테고리 추가하기
       </button>
       {visible ? (

@@ -40,10 +40,11 @@ function Signinup({ isSignin }) {
             location: locationRef.current.value,
           }
         );
-        dispatch({ type : "signin" , payload: userInfo.data.user });
+        dispatch({ type : 'signup', payload: userInfo.data.user });
         history.push('/');
         setErrorMsg(null);
       } catch (e) {
+        setErrorMsg(e.response.data.message);
         console.error(e);
       }
     }

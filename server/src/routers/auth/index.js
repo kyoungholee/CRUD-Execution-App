@@ -5,6 +5,7 @@ const User = require('../../models/user');
 const { validUser } = require('../../middleware/user');
 
 
+
 // 새 사용자를 만드는 로직(회원가입)
 router.post('/', async (req, res) => {
   // 입력된 정보가 다 안들어왔으면 에러를 보내준다.
@@ -35,6 +36,7 @@ router.post('/', async (req, res) => {
     return res.send({
       user: user,
     });
+    
   } catch (error) {
     console.log(error);
     return res.sendStatus(500);
