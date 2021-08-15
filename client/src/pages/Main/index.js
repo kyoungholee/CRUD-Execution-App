@@ -6,6 +6,7 @@ import { Route, useHistory, useLocation } from 'react-router';
 import { useState } from 'react';
 import useApiCall from '../../hooks/useApiCall';
 
+
 function Main() {
   const history = useHistory();
   const location = useLocation(); // 현재 url에서 id값을 얻기 위해
@@ -18,7 +19,7 @@ function Main() {
   const [visible, setVisible] = useState(false);
 
   if (!testData) {
-    return <></>;
+    return <>찾고 있습니다. </>;
   }
 
   if (loading) {
@@ -38,7 +39,6 @@ function Main() {
         time={boardData.time}
         price={boardData.price}
         user={boardData.user}
-        imageLink={boardData.imageLink}
         setBoardData={() => {
           history.push(`/board/${boardData._id}`);
         }}
@@ -73,6 +73,7 @@ function Main() {
 
         카테고리 추가하기
       </button>
+      
       {visible ? (
         <Write
           boardData={selectedBoardData}

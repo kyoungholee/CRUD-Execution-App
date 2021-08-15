@@ -13,6 +13,7 @@ function Write({ boardData, setVisible, fetchData }) {
 
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
+      
       title,
       category,
       price,
@@ -47,44 +48,6 @@ function Write({ boardData, setVisible, fetchData }) {
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
     history.push('/');
   };
-
-  if (boardData === null) {
-    return (
-      <div
-        className='write'
-        onClick={() => {
-          setVisible(false);
-        }}
-      >
-        <div className='inputs-wrapper'>
-          <Input title={'글 제목'} value={title} setValue={setTitle} />
-
-          <Input title={'카테고리'} value={category} setValue={setCategory} />
-          <Input
-            title={'가격'}
-            value={price}
-            setValue={setPrice}
-            inputType={'number'}
-          />
-          <Input title={'글 내용'} value={contents} setValue={setContents} />
-          <div className='button-wrapper'>
-            <button className='green' onClick={createBoardData}>
-              작성하기
-            </button>
-            <button
-              className='red'
-              onClick={() => {
-                setVisible(false);
-              }}
-            >
-              취소하기
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  } else {
-    // 여기는 수정하기
     return (
       <div
         className='write'
@@ -115,9 +78,5 @@ function Write({ boardData, setVisible, fetchData }) {
       </div>
     );
   }
-}
 
 export default Write;
-
-// position
-// static, fixed, absolute, relative

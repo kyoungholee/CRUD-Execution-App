@@ -17,6 +17,7 @@ function CategoryList({categoryList, setSelectedCategory}) {
       <div className = 'category-list_title'>카테코리</div>
       {CategoryListComponent}
     </div>
+
   );
 }
 

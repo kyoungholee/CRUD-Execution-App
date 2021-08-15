@@ -65,6 +65,7 @@ return (
         setInputValue(e.target.value);
       }} // e 에 input 입력 이벤트에 대한 정보가 있음.
     />
+    <div> 이곳을 사용해보자 </div>
     <div className='button-wrapper'>
       <button onClick={updateCategory} className='green'>
         수정하기

@@ -1,6 +1,7 @@
 //리엑트에서 page를 이동 할 수 있는 이유는 react-router-dom를 이용하여 페이지를 기록하기 때문이다.
 // 여기서 useHistory를 이용해서 페이지에 대한 이동 자유를 줄 수 있다. 
 
+import CategoryPage from '../../pages/Category';
 import React from 'react';
 
 // 클릭시 앞, 뒤로 갈 수 있게 해줄 수 있는 기능이 있다.
@@ -15,7 +16,7 @@ function Footer() {
         {
           title: '카테고리',
           color: 'yellow',
-          onClick: () => history.push('/category'),
+          onClick: () => history.push('/Category'),
         },
         {
           title: '내글쓰기',

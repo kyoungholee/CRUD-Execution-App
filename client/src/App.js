@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path='/category'>
+          <Route path='/Category'>
             <Category />
           </Route>
           <Route exact path='/'>
