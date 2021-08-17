@@ -1,3 +1,5 @@
+// 메인 글 쓰는 부분  ~~  board 부분 이다 .
+
 import Board from '../../components/Board';
 import Write from '../../components/Write';
 import Detail from '../../components/Detail';

@@ -3,6 +3,8 @@ import useApiCall from '../../hooks/useApiCall';
 function ApiCall (){
     const [loading, payload, error ] = useApiCall(
         `${process.env.REACT_APP_API_SERVER}/api/board`
+        `${process.env.REACT_APP_API_SERVER}/api/category`
+        
     );
 
     if (loading === true) {

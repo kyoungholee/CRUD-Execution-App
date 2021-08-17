@@ -1,17 +1,14 @@
-//카테코리에 있는 crud를 나타낸다. !!
-
 const CategoryModel = require('../../models/category');
 
 const listCategory = async () => {
   try {
     const categories = await CategoryModel.find({}).exec();
     return categories;
-  } catch (err) { 
+  } catch (err) {
     console.error(err);
     return [];
   }
 };
-
 
 const getCategoryById = async (categoryId) => {
   try {
@@ -22,7 +19,6 @@ const getCategoryById = async (categoryId) => {
     return {};
   }
 };
-
 
 const addCategory = async ({ title }) => {
   try {
@@ -37,11 +33,13 @@ const addCategory = async ({ title }) => {
 
 const updateCategory = async ({ categoryId, title }) => {
   try {
-    const query  = {_id : categoryId};
-    await CategoryModel.updateOne(query).exec();
-  } catch(err) {
+    const query = { _id: categoryId };
+    await CategoryModel.updateOne(query, {
+      title,
+    }).exec();
+  } catch (err) {
     console.error(err);
-    return{};
+    return {};
   }
 };
 
@@ -56,7 +54,7 @@ const deleteCategory = async ({ categoryId }) => {
 };
 
 module.exports = {
-  listCategory, 
+  listCategory,
   getCategoryById,
   addCategory,
   updateCategory,
