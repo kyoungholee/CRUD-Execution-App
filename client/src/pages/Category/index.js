@@ -4,6 +4,7 @@ import CategoryInput from '../../components/CategoryInput';
 import useApiCall from '../../hooks/useApiCall';
 import { useState } from 'react';
 
+
 function CategoryPage() {
   const [loading, categoryData, error, fetchData] = useApiCall(
     `${process.env.REACT_APP_API_SERVER}/api/category`
@@ -24,6 +25,7 @@ function CategoryPage() {
   }
 
   return (
+    //이부분 확실히 공부 다시 하기 !! 
     <div className='category-page'>
       <CategoryList
         categoryList={categoryData}

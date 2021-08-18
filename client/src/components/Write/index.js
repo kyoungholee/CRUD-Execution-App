@@ -70,9 +70,6 @@ function Write({ boardData, setVisible, fetchData }) {
             <button className='green' onClick={createBoardData}>
               작성하기 
             </button>
-            <button className='red' onClick={deleteBoardData}>
-              삭제하기
-            </button>
           </div>
         </div>
       </div>

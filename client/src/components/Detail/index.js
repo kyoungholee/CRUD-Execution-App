@@ -9,7 +9,6 @@ function Detail({ boardData, setVisible }) {
         time={boardData.time}
         price={boardData.price}
         user={boardData.user}
-        imageLink={boardData.imageLink}
       />
       <Content setVisible={setVisible} content={boardData.contents} />
     </div>
