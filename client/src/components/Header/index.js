@@ -45,6 +45,15 @@ return (
         >
           {username === '' ? '메뉴' : username}
         </button>
+
+        <ul class="submenu"> 
+          <li><a class="submenuLink longLink">장바구니</a>
+          </li> <li><a class="submenuLink longLink">리스트 목록</a></li> 
+          <li li><a class="submenuLink longLink">즐겨찾기</a></li> 
+        </ul>
+
+
+
         <ul className='dropdown-menu' aria-labelledby='dropdownMenu2'>
           {username === '' && (
             <li>

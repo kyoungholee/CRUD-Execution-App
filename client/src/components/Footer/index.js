@@ -12,14 +12,14 @@ function Footer() {
     const history = useHistory();
     const buttonList = [
         { title: '홈',  onClick: () => history.push('/') },
-        { title: '검색', onClick: () => history.push('/search')},
+        
         {
           title: '카테고리',
           color: 'yellow',
           onClick: () => history.push('/category'),
         },
         {
-          title: '내글쓰기',
+          title: '관리자들 간의 소통',
           color: 'green',
           onClick: () => history.push('/Writer'),
         },

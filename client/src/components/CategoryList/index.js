@@ -16,7 +16,7 @@ function CategoryList({ categoryList, setSelectedCategory }) {
   return (
     <div className='category-list'>
       <div className='category-list__title'>카테고리 목록들 </div>
-      {CategoryListComponent}
+        <button>{CategoryListComponent}</button>
     </div>
   );
 }

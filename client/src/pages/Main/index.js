@@ -73,7 +73,7 @@ function Main() {
         onClick={() => setVisible((state) => !state)}
       >
 
-        카테고리 추가하기
+        중고나라 물품 올리기 
       </button>
       
       {visible ? (
