@@ -4,7 +4,6 @@ import Input from './Input';
 import { useHistory } from 'react-router-dom';
 
 function Write({ boardData, setVisible, fetchData }) {
-
   const [title, setTitle] = useState(boardData?.title || '');
   const [category, setCategory] = useState(boardData?.category || '');
   const [price, setPrice] = useState(boardData?.price || '');
@@ -13,7 +12,6 @@ function Write({ boardData, setVisible, fetchData }) {
 
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
-      
       title,
       category,
       price,
@@ -25,7 +23,7 @@ function Write({ boardData, setVisible, fetchData }) {
 
   const updateBoardData = async () => {
     await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, {
-    
+      _id: boardData._id, // 어떤 걸 수정해야 될 지 알려주어야 함
       title,
       category,
       price,
@@ -48,16 +46,18 @@ function Write({ boardData, setVisible, fetchData }) {
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
     history.push('/');
   };
+
+  if (!boardData) {
     return (
       <div
         className='write'
-        onClick={(e) => {
-          if ([...e.target?.classList].includes('write')) setVisible(false);
+        onClick={() => {
+          setVisible(false);
         }}
       >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
-          
+
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -68,12 +68,57 @@ function Write({ boardData, setVisible, fetchData }) {
           <Input title={'글 내용'} value={contents} setValue={setContents} />
           <div className='button-wrapper'>
             <button className='green' onClick={createBoardData}>
-              작성하기 
+              작성하기
+            </button>
+            <button
+              className='red'
+              onClick={() => {
+                setVisible(false);
+              }}
+            >
+              취소하기
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    // 여기는 수정하기
+    return (
+      <div
+        className='write'
+        onClick={(e) => {
+          if ([...e.target?.classList].includes('write')) setVisible(false);
+        }}
+      >
+        <div className='inputs-wrapper'>
+          <Input title={'글 제목'} value={title} setValue={setTitle} />
+
+          
+          <Input title={'카테고리'} value={category} setValue={setCategory} />
+          <Input
+            title={'가격'}
+            value={price}
+            setValue={setPrice}
+            inputType={'number'}
+          />
+          <Input title={'글 내용'} value={contents} setValue={setContents} />
+          <div className='button-wrapper'>
+
+            <button className='green' onClick={updateBoardData}>
+              수정하기
+            </button>
+            <button className='red' onClick={deleteBoardData}>
+              삭제하기
             </button>
           </div>
         </div>
       </div>
     );
   }
+}
 
 export default Write;
+
+// position
+// static, fixed, absolute, relative

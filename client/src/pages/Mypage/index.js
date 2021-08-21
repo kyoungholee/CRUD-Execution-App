@@ -7,4 +7,8 @@ function MyPage() {
     const [loading, error, writeData, fetchData] = useApiCall(
         `${process.env.REACT_APP_API_SERVER}/api/writer`
   );
-  const [] = useState(null);
+  const [selectedWriter, setSelectedWriter] = useState(null);
+
+  if(!writerData) {
+      
+  }
