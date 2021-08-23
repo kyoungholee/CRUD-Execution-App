@@ -40,24 +40,23 @@ function Write({ boardData, setVisible, fetchData }) {
       `${process.env.REACT_APP_API_SERVER}/api/board/${boardData._id}`
     );
     // 2. Write 안보이게 하기
-    setVisible(false);
+    setVisible(null);
     // 3. fetchData 호출
     fetchData();
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
     history.push('/');
   };
 
-  if (!boardData) {
+  if (boardData === null) {
     return (
       <div
         className='write'
-        onClick={() => {
-          setVisible(false);
+        onClick={(e) => {
+          setVisible(e.target.value);
         }}
       >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
-
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -94,7 +93,6 @@ function Write({ boardData, setVisible, fetchData }) {
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
 
-          
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -104,14 +102,10 @@ function Write({ boardData, setVisible, fetchData }) {
           />
           <Input title={'글 내용'} value={contents} setValue={setContents} />
           <div className='button-wrapper'>
-
-            <button className='green' onClick={updateBoardData}>
-              수정하기
+            <button className='green' onClick={createBoardData}>
+              작성하기
             </button>
-            <button className='red' onClick={deleteBoardData}>
-              삭제하기
-            </button>
-          </div>
+         </div>
         </div>
       </div>
     );

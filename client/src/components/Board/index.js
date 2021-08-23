@@ -10,6 +10,8 @@ function Board({
 }) {
     return (
         <div className = 'board' onClick = {setBoardData}>
+
+        
             <div className = 'title'>{title}</div>
             <div className = 'category-time'>
                 <div className = 'category'> {category}</div>

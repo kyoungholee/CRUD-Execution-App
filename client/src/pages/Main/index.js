@@ -38,9 +38,9 @@ function Main() {
         key={boardData._id}
         title={boardData.title}
         category={boardData.category}
-        time={boardData.time}
         price={boardData.price}
         user={boardData.user}
+        contents = {boardData.contents}
         setBoardData={() => {
           history.push(`/board/${boardData._id}`);
         }}
