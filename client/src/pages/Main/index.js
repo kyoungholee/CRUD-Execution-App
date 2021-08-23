@@ -2,6 +2,7 @@
 
 import Board from '../../components/Board';
 import Write from '../../components/Write';
+
 import Detail from '../../components/Detail';
 import { Route, useHistory, useLocation } from 'react-router';
 
@@ -35,13 +36,13 @@ function Main() {
   const BoardComponents = testData.map((boardData) => {
     return (
       <Board
-        key={boardData._id}
-        title={boardData.title}
-        category={boardData.category}
-        price={boardData.price}
-        user={boardData.user}
+        key = {boardData._id}
+        title = {boardData.title}
+        category = {boardData.category}
+        price = {boardData.price}
+        user = {boardData.user}
         contents = {boardData.contents}
-        setBoardData={() => {
+        setBoardData = {() => {
           history.push(`/board/${boardData._id}`);
         }}
       />
@@ -68,6 +69,8 @@ function Main() {
           setVisible={setVisible}
         />
       </Route>
+      <div className = 'write-page'> 
+      </div>
       <button
         className='open-button'
         onClick={() => setVisible((state) => !state)}
