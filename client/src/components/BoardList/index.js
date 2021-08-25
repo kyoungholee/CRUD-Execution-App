@@ -1,15 +1,15 @@
 import Write from "../Write";
 
 
-function WriteList({ writeList, setSelectedWrite}) {
-    const WriteListComponent = writeList.map((write) => {
+function BoardList({ boardList, setSelectedBoard}) {
+    const BoardListComponent = boardList.map((board) => {
         return (
             <Write 
-                key = {write._id}
+                key = {board._id}
                 onClick = {() => {
-                    setSelectedWrite(write);
+                    setSelectedBoard(board);
                 }}
-                title = {write.title}
+                title = {board.title}
                 />
         );
     });
@@ -17,10 +17,10 @@ function WriteList({ writeList, setSelectedWrite}) {
 return (
     <div className = 'write-list'>
         <div className = 'category-list_title'> 중고거래 목록들</div>
-        <button> {WriteListComponent}</button>
+        <button> {BoardListComponent}</button>
     </div>
 
 );
 }
 
-export default WriteList;
+export default BoardList;

@@ -2,7 +2,6 @@
 
 import Board from '../../components/Board';
 import Write from '../../components/Write';
-
 import Detail from '../../components/Detail';
 import { Route, useHistory, useLocation } from 'react-router';
 
@@ -44,6 +43,7 @@ function Main() {
         contents = {boardData.contents}
         setBoardData = {() => {
           history.push(`/board/${boardData._id}`);
+          //board 리스트 클릭 시키는 부분
         }}
       />
     );
@@ -62,7 +62,7 @@ function Main() {
       <Route exact path='/'>
         <div className='board-components-wrapper'>{BoardComponents}</div>
       </Route>
-      <Route path={`/board/:id`}>
+      <Route path={`/boardData_.id`}>
         <Detail
           boardData={selectedBoardData}
           setTestData={() => {}}

@@ -1,5 +1,4 @@
 
-
 function Content({ content, setVisible }) {
   const updateBoardData = () => {
     setVisible(true);
