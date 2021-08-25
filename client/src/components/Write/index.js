@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Input from './Input';
+
 import { useHistory } from 'react-router-dom';
 
 function Write({ boardData, setVisible, fetchData }) {
   const [title, setTitle] = useState(boardData?.title || '');
+  const [imageLink, setImageLink] = useState(boardData?.imageLink || '');
   const [category, setCategory] = useState(boardData?.category || '');
   const [price, setPrice] = useState(boardData?.price || '');
   const [contents, setContents] = useState(boardData?.contents || '');
@@ -13,6 +15,7 @@ function Write({ boardData, setVisible, fetchData }) {
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
       title,
+      imageLink,
       category,
       price,
       contents,
@@ -22,9 +25,11 @@ function Write({ boardData, setVisible, fetchData }) {
   };
 
   const updateBoardData = async () => {
-    await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, {
-      _id: boardData._id, // 어떤 걸 수정해야 될 지 알려주어야 함
+    await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, { 
+      // 어떤 걸 수정해야 될 지 알려주어야 함
+      id : boardData,
       title,
+      imageLink,
       category,
       price,
       contents,
@@ -40,7 +45,7 @@ function Write({ boardData, setVisible, fetchData }) {
       `${process.env.REACT_APP_API_SERVER}/api/board/${boardData._id}`
     );
     // 2. Write 안보이게 하기
-    setVisible(null);
+    setVisible(false);
     // 3. fetchData 호출
     fetchData();
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
@@ -51,12 +56,17 @@ function Write({ boardData, setVisible, fetchData }) {
     return (
       <div
         className='write'
-        onClick={(e) => {
-          setVisible(e.target.value);
+        onClick={() => {
+          setVisible(false);
         }}
       >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
+          <Input
+            title={'사진 링크'}
+            value={imageLink}
+            setValue={setImageLink}
+          />
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -92,7 +102,11 @@ function Write({ boardData, setVisible, fetchData }) {
       >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
-
+          <Input
+            title={'사진 링크'}
+            value={imageLink}
+            setValue={setImageLink}
+          />
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -103,9 +117,12 @@ function Write({ boardData, setVisible, fetchData }) {
           <Input title={'글 내용'} value={contents} setValue={setContents} />
           <div className='button-wrapper'>
             <button className='green' onClick={createBoardData}>
-              작성하기
+              수정하기
             </button>
-         </div>
+            <button className='red' onClick={deleteBoardData}>
+              삭제하기
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -113,6 +130,3 @@ function Write({ boardData, setVisible, fetchData }) {
 }
 
 export default Write;
-
-// position
-// static, fixed, absolute, relative

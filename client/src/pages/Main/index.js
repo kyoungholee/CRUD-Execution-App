@@ -42,8 +42,8 @@ function Main() {
         user = {boardData.user}
         contents = {boardData.contents}
         setBoardData = {() => {
-          history.push(`/board/${boardData._id}`);
-          //board 리스트 클릭 시키는 부분
+          history.push('/Detail');
+          //board 리스트 클릭 부분 
         }}
       />
     );
@@ -62,11 +62,18 @@ function Main() {
       <Route exact path='/'>
         <div className='board-components-wrapper'>{BoardComponents}</div>
       </Route>
-      <Route path={`/boardData_.id`}>
+      <Route path={`/board/:id`}>
+
         <Detail
           boardData={selectedBoardData}
           setTestData={() => {}}
           setVisible={setVisible}
+
+          key = {testData.id}
+          onClick = {() => {
+            setVisible(selectedBoardData);
+          }}
+          title = {testData.title}
         />
       </Route>
       <div className = 'write-page'> 
