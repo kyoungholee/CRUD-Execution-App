@@ -42,7 +42,7 @@ function Main() {
         user = {boardData.user}
         contents = {boardData.contents}
         setBoardData = {() => {
-          history.push('/Detail');
+          history.push(`/board/${boardData._id}`);
           //board 리스트 클릭 부분 
         }}
       />

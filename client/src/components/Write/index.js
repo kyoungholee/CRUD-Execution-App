@@ -52,14 +52,14 @@ function Write({ boardData, setVisible, fetchData }) {
     history.push('/');
   };
 
-  if (boardData === null) {
+  if (boardData !== null) {
     return (
       <div
-        className='write'
-        onClick={() => {
-          setVisible(false);
-        }}
-      >
+      className='write'
+      onClick={(e) => {
+        if ([...e.target?.classList].includes('write')) setVisible(false);
+      }}
+    >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
           <Input
@@ -116,7 +116,7 @@ function Write({ boardData, setVisible, fetchData }) {
           />
           <Input title={'글 내용'} value={contents} setValue={setContents} />
           <div className='button-wrapper'>
-            <button className='green' onClick={createBoardData}>
+            <button className='green' onClick={updateBoardData}>
               수정하기
             </button>
             <button className='red' onClick={deleteBoardData}>
