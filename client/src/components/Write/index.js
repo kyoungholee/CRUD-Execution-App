@@ -5,8 +5,9 @@ import Input from './Input';
 import { useHistory } from 'react-router-dom';
 
 function Write({ boardData, setVisible, fetchData }) {
+
   const [title, setTitle] = useState(boardData?.title || '');
-  const [imageLink, setImageLink] = useState(boardData?.imageLink || '');
+  
   const [category, setCategory] = useState(boardData?.category || '');
   const [price, setPrice] = useState(boardData?.price || '');
   const [contents, setContents] = useState(boardData?.contents || '');
@@ -15,7 +16,7 @@ function Write({ boardData, setVisible, fetchData }) {
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
       title,
-      imageLink,
+     
       category,
       price,
       contents,
@@ -29,7 +30,7 @@ function Write({ boardData, setVisible, fetchData }) {
       // 어떤 걸 수정해야 될 지 알려주어야 함
       id : boardData,
       title,
-      imageLink,
+
       category,
       price,
       contents,
@@ -45,14 +46,14 @@ function Write({ boardData, setVisible, fetchData }) {
       `${process.env.REACT_APP_API_SERVER}/api/board/${boardData._id}`
     );
     // 2. Write 안보이게 하기
-    setVisible(false);
     // 3. fetchData 호출
+    setVisible(false);
     fetchData();
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
     history.push('/');
   };
 
-  if (boardData !== null) {
+  if (!boardData) {
     return (
       <div
       className='write'
@@ -62,11 +63,7 @@ function Write({ boardData, setVisible, fetchData }) {
     >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
-          <Input
-            title={'사진 링크'}
-            value={imageLink}
-            setValue={setImageLink}
-          />
+
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}
@@ -94,19 +91,16 @@ function Write({ boardData, setVisible, fetchData }) {
   } else {
     // 여기는 수정하기
     return (
-      <div
-        className='write'
-        onClick={(e) => {
-          if ([...e.target?.classList].includes('write')) setVisible(false);
-        }}
-      >
+      <div className = 'write-input'>
+        <input
+          type = 'text'
+          onClick = {(e) => {
+            setVisible(e.target.value);
+          }}
+          />
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
-          <Input
-            title={'사진 링크'}
-            value={imageLink}
-            setValue={setImageLink}
-          />
+
           <Input title={'카테고리'} value={category} setValue={setCategory} />
           <Input
             title={'가격'}

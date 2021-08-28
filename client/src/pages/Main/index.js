@@ -18,7 +18,7 @@ function Main() {
     `${process.env.REACT_APP_API_SERVER}/api/board`
   );
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(null);
 
   if (!testData) {
     return <>찾고 있습니다. </>;
@@ -59,7 +59,7 @@ function Main() {
 
   return (
     <div>
-      <Route exact path='/'>
+      <Route exact path = '/'>
         <div className='board-components-wrapper'>{BoardComponents}</div>
       </Route>
       <Route path={`/board/:id`}>
@@ -77,6 +77,7 @@ function Main() {
         />
       </Route>
       <div className = 'write-page'> 
+      아무런 관련 없는 클릭 부분 
       </div>
       <button
         className='open-button'
@@ -91,6 +92,7 @@ function Main() {
           boardData={selectedBoardData}
           setData={() => {}}
           setVisible={setVisible}
+          writeData = {testData}
           fetchData={fetchData}
         />
       ) : null}
