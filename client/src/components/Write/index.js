@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 function Write({ boardData, setVisible, fetchData }) {
 
   const [title, setTitle] = useState(boardData?.title || '');
-  
   const [category, setCategory] = useState(boardData?.category || '');
   const [price, setPrice] = useState(boardData?.price || '');
   const [contents, setContents] = useState(boardData?.contents || '');
@@ -16,7 +15,6 @@ function Write({ boardData, setVisible, fetchData }) {
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
       title,
-     
       category,
       price,
       contents,
@@ -30,7 +28,6 @@ function Write({ boardData, setVisible, fetchData }) {
       // 어떤 걸 수정해야 될 지 알려주어야 함
       id : boardData,
       title,
-
       category,
       price,
       contents,
@@ -79,7 +76,7 @@ function Write({ boardData, setVisible, fetchData }) {
             <button
               className='red'
               onClick={() => {
-                setVisible(false);
+                setVisible(null);
               }}
             >
               취소하기
@@ -90,14 +87,14 @@ function Write({ boardData, setVisible, fetchData }) {
     );
   } else {
     // 여기는 수정하기
+
     return (
-      <div className = 'write-input'>
-        <input
-          type = 'text'
-          onClick = {(e) => {
-            setVisible(e.target.value);
-          }}
-          />
+      <div
+        className='write'
+        onClick={(e) => {
+          if ([...e.target?.classList].includes('write')) setVisible(false);
+        }}
+      >
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
 

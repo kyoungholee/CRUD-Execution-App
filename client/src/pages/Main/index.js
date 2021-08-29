@@ -42,7 +42,7 @@ function Main() {
         user = {boardData.user}
         contents = {boardData.contents}
         setBoardData = {() => {
-          history.push(`/board/${boardData._id}`);
+          history.push(`/board/${testData}`);
           //board 리스트 클릭 부분 
         }}
       />
@@ -74,7 +74,11 @@ function Main() {
             setVisible(selectedBoardData);
           }}
           title = {testData.title}
+
+          여기클릭 해바
         />
+
+
       </Route>
       <div className = 'write-page'> 
       아무런 관련 없는 클릭 부분 
