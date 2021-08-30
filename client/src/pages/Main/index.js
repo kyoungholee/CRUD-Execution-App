@@ -1,6 +1,5 @@
-// 메인 글 쓰는 부분  ~~  board 부분 이다 .
-
 import Board from '../../components/Board';
+import BoardList from '../../components/BoardList'
 import Write from '../../components/Write';
 import Detail from '../../components/Detail';
 import { Route, useHistory, useLocation } from 'react-router';
@@ -8,20 +7,17 @@ import { Route, useHistory, useLocation } from 'react-router';
 import { useState } from 'react';
 import useApiCall from '../../hooks/useApiCall';
 
-
 function Main() {
   const history = useHistory();
   const location = useLocation(); // 현재 url에서 id값을 얻기 위해
- 
-
   const [loading, testData, error, fetchData] = useApiCall(
     `${process.env.REACT_APP_API_SERVER}/api/board`
   );
 
-  const [visible, setVisible] = useState(null);
+  const [visible, setVisible] = useState(false);
 
   if (!testData) {
-    return <>찾고 있습니다. </>;
+    return <></>;
   }
 
   if (loading) {
@@ -34,18 +30,21 @@ function Main() {
 
   const BoardComponents = testData.map((boardData) => {
     return (
+      <div>
+        <button>
       <Board
-        key = {boardData._id}
-        title = {boardData.title}
-        category = {boardData.category}
-        price = {boardData.price}
-        user = {boardData.user}
-        contents = {boardData.contents}
-        setBoardData = {() => {
-          history.push(`/board/${testData}`);
-          //board 리스트 클릭 부분 
+        key={boardData._id}
+        title={boardData.title}
+        category={boardData.category}
+        time={boardData.time}
+        price={boardData.price}
+        user={boardData.user}
+        setBoardData={() => {
+          history.push(`/board/${boardData}`);
         }}
-      />
+        />
+        </button>
+      </div>
     );
   });
   // 현재 url에서 id값을 얻음
@@ -59,44 +58,28 @@ function Main() {
 
   return (
     <div>
-      <Route exact path = '/'>
+      <Route exact path='/'>
         <div className='board-components-wrapper'>{BoardComponents}</div>
       </Route>
       <Route path={`/board/:id`}>
-
         <Detail
           boardData={selectedBoardData}
           setTestData={() => {}}
           setVisible={setVisible}
-
-          key = {testData.id}
-          onClick = {() => {
-            setVisible(selectedBoardData);
-          }}
-          title = {testData.title}
-
-          여기클릭 해바
         />
-
-
       </Route>
-      <div className = 'write-page'> 
-      아무런 관련 없는 클릭 부분 
-      </div>
       <button
         className='open-button'
         onClick={() => setVisible((state) => !state)}
       >
 
-        중고나라 물품 올리기 
+        리스트 목록 버튼 
       </button>
-      
       {visible ? (
         <Write
           boardData={selectedBoardData}
           setData={() => {}}
           setVisible={setVisible}
-          writeData = {testData}
           fetchData={fetchData}
         />
       ) : null}

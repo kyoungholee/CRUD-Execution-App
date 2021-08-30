@@ -14,7 +14,7 @@ function Write({ boardData, setVisible, fetchData }) {
 
   const createBoardData = async () => {
     await axios.post(`${process.env.REACT_APP_API_SERVER}/api/board`, {
-      title,
+      title : setVisible,
       category,
       price,
       contents,
@@ -26,15 +26,14 @@ function Write({ boardData, setVisible, fetchData }) {
   const updateBoardData = async () => {
     await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, { 
       // 어떤 걸 수정해야 될 지 알려주어야 함
-      id : boardData,
-      title,
+      _id : boardData._id,
+      title : setVisible,
       category,
       price,
       contents,
     });
     setVisible(false);
     fetchData();
-    history.push('/');
   };
 
   const deleteBoardData = async () => {
@@ -44,20 +43,24 @@ function Write({ boardData, setVisible, fetchData }) {
     );
     // 2. Write 안보이게 하기
     // 3. fetchData 호출
-    setVisible(false);
+    setVisible(null);
     fetchData();
     // 4. boardData 를 null로 바꾼다. => main으로 간다.
-    history.push('/');
+
   };
 
   if (!boardData) {
+
     return (
-      <div
-      className='write'
-      onClick={(e) => {
-        if ([...e.target?.classList].includes('write')) setVisible(false);
-      }}
-    >
+      <div className='category-input'>
+        <input
+          type='text'
+          value={setVisible}
+          onChange={(e) => {
+            setVisible(e.target.value);
+          }} // e 에 input 입력 이벤트에 대한 정보가 있음.
+        />
+    
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
 
@@ -89,12 +92,14 @@ function Write({ boardData, setVisible, fetchData }) {
     // 여기는 수정하기
 
     return (
-      <div
-        className='write'
-        onClick={(e) => {
-          if ([...e.target?.classList].includes('write')) setVisible(false);
-        }}
-      >
+        <div className='category-input'>
+          <input
+            type='text'
+            value={setVisible}
+            onChange={(e) => {
+              setVisible(e.target.value);
+            }} // e 에 input 입력 이벤트에 대한 정보가 있음.
+          />
         <div className='inputs-wrapper'>
           <Input title={'글 제목'} value={title} setValue={setTitle} />
 

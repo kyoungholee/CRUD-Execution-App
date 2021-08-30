@@ -5,7 +5,7 @@ function CategoryList({ categoryList, setSelectedCategory }) {
   const CategoryListComponent = categoryList.map((category) => {
     return (
       <Category
-        key={category._id}
+        key ={category._id}
         onClick={() => {
           setSelectedCategory(category);
         }}
