@@ -31,16 +31,16 @@ function Main() {
   const BoardComponents = testData.map((boardData) => {
     return (
       <div>
+    
         <button>
       <Board
-        key={boardData._id}
         title={boardData.title}
         category={boardData.category}
         time={boardData.time}
         price={boardData.price}
         user={boardData.user}
         setBoardData={() => {
-          history.push(`/board/${boardData}`);
+          history.push(`/board/:id`);
         }}
         />
         </button>

@@ -16,7 +16,7 @@ function BoardList({ boardList, setSelectedBoard}) {
 
 return (
     <div className = 'write-list'>
-        <div className = 'category-list_title'> 중고거래 목록들</div>
+        <div className = 'category-list_title'> 중고거래 board목록들</div>
         <button> {BoardListComponent}</button>
     </div>
 

@@ -27,7 +27,7 @@ function Write({ boardData, setVisible, fetchData }) {
     await axios.put(`${process.env.REACT_APP_API_SERVER}/api/board`, { 
       // 어떤 걸 수정해야 될 지 알려주어야 함
       _id : boardData._id,
-      title : setVisible,
+      title,
       category,
       price,
       contents,

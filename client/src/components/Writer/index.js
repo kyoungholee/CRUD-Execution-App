@@ -10,3 +10,4 @@ function Writer({title, onClick }) {
 
 
 export default Writer;
+
